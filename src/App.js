@@ -6,16 +6,16 @@ import { useEffect, useState } from 'react';
 let noGuestMessage = 'No guest found! Please add guests to your lists!';
 let title = 'GUEST LIST';
 
-export const inputTextFieldStyle = css`
+const inputTextFieldStyle = css`
   border-style: line;
   border-color: black;
-  background-color: rgba(225, 199, 117);
+  background-color: rgba(216, 191, 216);
   height: 30px;
   width: 600px;
   margin-bottom: 10px;
 `;
 
-export const listItemStyle = css`
+const listItemStyle = css`
   list-style: none;
   display: flex;
   // flex-wrap: nowrap;
@@ -23,32 +23,32 @@ export const listItemStyle = css`
   white-space: pre-wrap;
 `;
 
-export const notComingGuestStyle = css`
+const notComingGuestStyle = css`
   font-family: sans-serif;
   font-size: 20px;
   font-weight: 400%;
-  color: #da2c43;
+  color: #ff1493;
   font-weight: bold;
 `;
 
-export const ComingGuestStyle = css`
+const ComingGuestStyle = css`
   font-family: sans-serif;
   font-size: 20px;
   font-weight: 400%;
-  color: #197419;
+  color: #7b68ee;
   font-weight: bold;
 `;
 
-export const guestItemStyle = css`
+const guestItemStyle = css`
   display: flex;
   min-width: 430px;
 `;
 
-export const addGuestButtonStyle = css`
+const addGuestButtonStyle = css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(230, 0, 38);
+  background-color: rgb(186, 85, 211);
   border: none;
   transition: background-color 0.3s ease-in 0s;
   color: black;
@@ -68,12 +68,12 @@ export const addGuestButtonStyle = css`
   margin-top: 10px;
 `;
 
-export const inputWrapperStyle = css`
+const inputWrapperStyle = css`
   position: absolute;
   left: 400px;
 `;
 
-export const guestListStyle = css`
+const guestListStyle = css`
   border-color: black;
   border-radius: 0.5px;
   border-width: 0.5px;
@@ -84,11 +84,11 @@ export const guestListStyle = css`
   left: 400px;
 `;
 
-export const removeIconStyle = css`
+const removeIconStyle = css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(240, 100, 100);
+  background-color: rgb(255, 105, 180);
   border: none;
   transition: background-color 0.3s ease-in 0s;
   color: rgb(255, 255, 255);
@@ -111,7 +111,7 @@ export const removeIconStyle = css`
   }
 `;
 
-export const attendanceStatusCheckBoxStyle = css`
+const attendanceStatusCheckBoxStyle = css`
   margin-top: auto;
   margin-bottom: auto;
   width: 40px;
@@ -159,7 +159,7 @@ function ShowGuestInfoInList(guestAttributes) {
       {attendanceStatus ? (
         <p css={ComingGuestStyle}>
           {' ' + guestAttributes.firstName} {guestAttributes.lastName} is a
-          party 🐉!
+          party 🐧!
         </p>
       ) : (
         <p css={notComingGuestStyle}>
@@ -292,7 +292,7 @@ function App() {
                         });
                       }}
                     >
-                      remove
+                      Remove
                     </button>
                     {'   '}
                     <ShowGuestInfoInList

@@ -6,13 +6,27 @@ import { useEffect, useState } from 'react';
 let noGuestMessage = 'No guest found! Please add guests to your lists!';
 let title = 'GUEST LIST';
 
+const wrapperStyle = css`
+  text-align: left;
+  margin-left: 380px;
+  margin-top: 150px;
+`;
+
+const image = css`
+  width: 600px;
+  float: right;
+  margin-right: 150px;
+  margin-top: -110px;
+`;
 const inputTextFieldStyle = css`
   border-style: line;
+  border-width: 1px;
   border-color: black;
-  background-color: rgba(216, 191, 216);
+  background-color: #ade0ee;
   height: 30px;
-  width: 600px;
-  margin-bottom: 10px;
+  width: 400px;
+  margin-top: 25px;
+  margin-bottom: 0px;
 `;
 
 const listItemStyle = css`
@@ -25,15 +39,15 @@ const listItemStyle = css`
 
 const notComingGuestStyle = css`
   font-family: sans-serif;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 400%;
   color: #ff1493;
   font-weight: bold;
 `;
 
-const ComingGuestStyle = css`
+const comingGuestStyle = css`
   font-family: sans-serif;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 400%;
   color: #7b68ee;
   font-weight: bold;
@@ -48,62 +62,56 @@ const addGuestButtonStyle = css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(186, 85, 211);
-  border: none;
-  transition: background-color 0.3s ease-in 0s;
-  color: black;
+  background-color: #ffb6c1;
+  border-width: 1px;
+  border-color: black;
   font-weight: 600;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   padding: 8px 12px;
   height: 36px;
-  width: 200px;
-  font-size: 1rem;
-  letter-spacing: 0.018rem;
-  line-height: 1.269rem;
+  width: 150px;
+  font-size: 14px;
+  margin-left: 215px;
   :hover {
     background-color: rgb(250, 130, 167);
   }
-  margin-top: 10px;
+  margin-top: 40px;
 `;
 
 const inputWrapperStyle = css`
   position: absolute;
   left: 400px;
+  font-weight: bold;
+  margin-left: -210px;
 `;
 
 const guestListStyle = css`
-  border-color: black;
-  border-radius: 0.5px;
-  border-width: 0.5px;
-  border-style: dotted;
-  width: 700px;
+  border: none;
+  margin-top: 100px;
   position: absolute;
-  top: 250px;
-  left: 400px;
+  top: 320px;
+  left: 442px;
 `;
 
 const removeIconStyle = css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(255, 105, 180);
+  background-color: #fd6c9e;
   border: none;
   transition: background-color 0.3s ease-in 0s;
   color: rgb(255, 255, 255);
-  font-weight: 400;
+  font-weight: 600;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   padding: 4px 6px;
-  width: 90px;
-  height: 40px;
-  font-size: 1.2rem;
-  letter-spacing: 0.018rem;
-  line-height: 1.269rem;
-  // opacity: 0.2;
-  margin-left: 10px;
+  width: 70px;
+  height: 30px;
+  font-size: 14px;
+  margin-left: -200px;
   margin-top: auto;
   margin-bottom: auto;
   :hover {
@@ -114,8 +122,8 @@ const removeIconStyle = css`
 const attendanceStatusCheckBoxStyle = css`
   margin-top: auto;
   margin-bottom: auto;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 25px;
 `;
 
 const baseUrl = 'https://ul-express-rest-guest-list-api.herokuapp.com';
@@ -157,14 +165,14 @@ function ShowGuestInfoInList(guestAttributes) {
         }}
       />
       {attendanceStatus ? (
-        <p css={ComingGuestStyle}>
+        <p css={comingGuestStyle}>
           {' ' + guestAttributes.firstName} {guestAttributes.lastName} is a
-          party 🐧!
+          party 🐧
         </p>
       ) : (
         <p css={notComingGuestStyle}>
           {' ' + guestAttributes.firstName} {guestAttributes.lastName} is a lazy
-          fluffy 🐼!
+          fluffy 🐼
         </p>
       )}
     </li>
@@ -227,12 +235,12 @@ function App() {
   const disabled = loading ? true : false;
 
   return (
-    <div className="APPWrapper">
-      <h1> {title} </h1>
+    <div>
+      <h1 css={wrapperStyle}> {title} </h1>
 
       <div css={inputWrapperStyle}>
         <label>
-          First name:{' '}
+          First Name{' '}
           <input
             css={inputTextFieldStyle}
             value={guestFirstName}
@@ -244,7 +252,7 @@ function App() {
         </label>
         <br />
         <label>
-          Last name:{' '}
+          Last Name{' '}
           <input
             css={inputTextFieldStyle}
             value={guestLastName}
@@ -273,6 +281,7 @@ function App() {
           ADD GUEST
         </button>
       </div>
+      <img css={image} src={require('./567.jpg')} alt="lion" />
       <div css={guestListStyle}>
         {/* in case loading takes a while... this shows a loading message*/}
         {loading === true ? (
